@@ -1,0 +1,19 @@
+int outpin1 = 12;
+int outpin2 = 11;
+int outpin3 = 9;
+int outpin4 = 8;
+void setup()
+{
+  pinMode(12,OUTPUT);
+  pinMode(11,OUTPUT);
+  pinMode(9,OUTPUT);
+  pinMode(8,OUTPUT);
+}
+
+void loop()
+{
+    analogWrite(outpin1,analogRead(A0));
+    analogWrite(outpin2,analogRead(A1));
+    analogWrite(outpin3,analogRead(A3));
+    analogWrite(outpin4,analogRead(A4)); 
+}
