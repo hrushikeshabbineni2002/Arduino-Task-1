@@ -1,38 +1,32 @@
+String password ;
+String correctpassword = String("1234");
 
-
-
-#define TIME_MSG_LEN  11   // time sync to PC is HEADER and unix time_t as ten ascii digits
-#define TIME_HEADER  255 
-void setup()
+void setup() 
 {
-  
-Serial.begin(19200);
-pinmode(13,OUTPUT);
+  Serial.begin(9600);
 }
 
-void loop()
+void loop() 
 {
-  int password = 12345;
-  if(password=12345)
+  if (Serial.available()>0)
   {
-    serial.println("correct");
-    getpctime();
+    if (check() == true)
+      Serial.print("Correct Password");
+    else
+      Serial.print("Incorrect Password");
+    while(1){}
   }
-  else
-  {
-    serial.println("incorrect)
-  
-   getPCtime();        
-  if(DateTime.available()) 
-  {
-    unsigned long prevtime = DateTime.now(); 
-    while( prevtime == DateTime.now() )  
-      ;
-    DateTime.available(); 
-    digitalClockDisplay( );
-    
-   
-    Serial.print( TIME_HEADER,BYTE); 
-    Serial.println(DateTime.now());     
 }
-  }
+
+bool check()
+{
+    password = Serial.readString();
+  	if (password.equals(correctpassword))
+  	{ 
+  	  return true ;
+  	}
+  	else
+  	{
+   	  return false ; 
+  	}
+}
